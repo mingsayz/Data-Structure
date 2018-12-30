@@ -38,4 +38,5 @@ int main(void){
 	removeAt(1);
 	show();
 	return 0;
+  
 }
