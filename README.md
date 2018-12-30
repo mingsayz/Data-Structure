@@ -168,37 +168,17 @@
 ---
 
 ## 단일 연결 리스트
-  * 단일 연결 리스트는 다음과 같은 형태.
   * 포인터를 이용해 단방향적으로 다음 노드를 가리킨다.
   * 일반적으로 연결 리스트의 시작 노드를 헤드(head)라고 하며 별도로 관리한다.
   * 다음 노드가 없는 끝 노드의 다음 위치 값으로는 NULL을 넣는다.
 ![단일연결리스트](https://t1.daumcdn.net/cfile/tistory/2115D641533FDD5E3A)
+  * 삽입 및 삭제 기능에서의 예외 사항을 처리할 필요가 있다.
+  * 삭제할 원소가 없는데 삭제하는 경우, 머리(head) 노드 자체를 잘못 넣은 경우 등을 체크해야 한다.
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct{
-	int data;
-	struct Node \*next;
-} Node;
-
-Node \*head;
-
-int main(void){
-	head = (Node*)malloc(sizeof(Node));
-	Node \*node1 = (Node*)malloc(sizeof(Node));
-	node1 -> data = 1;
-	Node \*node2 = (Node*)malloc(sizeof(Node));
-	node2 -> data = 2;
-	head -> next = node1;
-	node1 -> next = node2;
-	node2 -> next = NULL;
-	Node \*cur = head->next;
-  while (cur != NULL){
-		printf("%d",cur->data);
-		cur = cur->next;
-	}
-	return 0;
-}
-```
+---
+## 연결리스트의 특징
+  - 삽입과 삭제가 배열에 비해서 간단하다는 장점이 있다.
+  - 배열과 다르게 특정 인덱스로 즉시 접근하지 못하며, 원소를 차례대로 검색해야 한다.
+  - 추가적인 포인터 변수가 사용되므로 메모리 공간이 낭비된다.
+  - 기존에 배열을 이용했을 때보다 삽입과 삭제가 많은 경우에서 효율적이다.
+  - 다만 특정한 인덱스에 바로 참조해야 할 때가 많다면 배열을 이용하는 것이 더 효율적이다.
