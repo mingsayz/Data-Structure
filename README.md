@@ -97,3 +97,108 @@
     - int a\[2000\]\[2000\] : 16 MB
 
 ---
+
+## 연결리스트
+
+  * 연결 리스트의 필요성
+    - 일반적으로 배열을 사용하여 데이터를 순차적으로 저장하고, 나열할 수 있다.
+    - 배열을 사용하는 경우 메모리 공간이 불필요하게 낭비될 수 있다.
+
+---
+
+  * 배열 기반의 리스트
+    - 데이터를 순차적으로 저장하고, 처리할 때는 배열 기반의 리스트를 간단히 이용할 수 있다.
+
+  ```c
+  #include <stdio.h>
+  #define INF 1000
+
+  int arr[INF];
+  int count = 0;
+
+  void addBack(int data){
+  	arr[count] = data;
+  	count ++;
+  }
+
+  void addFirst(int data){
+  	for(int i = count; i >= 1 ; i--){
+  		arr[i] = arr[i - 1];
+  	}
+  	arr[0] = data;
+  	count ++;
+  }
+
+  void show(){
+  	for (int i = 0; i< count ; i++){
+  		printf("%d",arr[i]);
+  	}
+  }
+
+  void removeAt(int index){
+  	for (int i = index ; i < count -1 ; i++){
+  		arr[i] = arr[i + 1];
+  	}
+  	count--;
+  }
+
+  int main(void){
+  	addBack(5);
+  	addBack(6);
+  	addBack(7);
+  	addFirst(3);
+  	addFirst(1);
+  	removeAt(1);
+  	show();
+  	return 0;
+  }
+  ```
+  * 위와 같은 배열 기반 리스트의 특징
+    - 배열로 만들었으므로 특정한 위치의 원소에 즉시 접근할 수 있다는 장점이 있다.
+    - 데이터가 들어갈 공간을 미리 메모리에 할당해야 한다는 단점이 있다.
+    - 원하는 위치로의 삽입이나 삭제가 비효율적이다. (하나하나 앞으로 밀어줘야 함)
+
+---
+
+## 연결 리스트
+  * 일반적으로 연결 리스트는 구조체와 포인터를 함께 사용하여 구현한다.
+  * 연결 리스트는 리스트의 중간 지점에 노드를 추가하거나 삭제할 수 있어야 한다.
+  * 필요할 때마다 메모리의 공간을 할당 받는다.
+
+---
+
+## 단일 연결 리스트
+  * 단일 연결 리스트는 다음과 같은 형태.
+  * 포인터를 이용해 단방향적으로 다음 노드를 가리킨다.
+  * 일반적으로 연결 리스트의 시작 노드를 헤드(head)라고 하며 별도로 관리한다.
+  * 다음 노드가 없는 끝 노드의 다음 위치 값으로는 NULL을 넣는다.
+![단일연결리스트](https://t1.daumcdn.net/cfile/tistory/2115D641533FDD5E3A)
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+	int data;
+	struct Node \*next;
+} Node;
+
+Node \* head;
+
+int main(void){
+	head = (Node*)malloc(sizeof(Node));
+	Node \* node1 = (Node*)malloc(sizeof(Node));
+	node1 -> data = 1;
+	Node \* node2 = (Node*)malloc(sizeof(Node));
+	node2 -> data = 2;
+	head -> next = node1;
+	node1 -> next = node2;
+	node2 -> next = NULL;
+	Node \* cur = head->next;
+  while (cur != NULL){
+		printf("%d",cur->data);
+		cur = cur->next;
+	}
+	return 0;
+}
+```
