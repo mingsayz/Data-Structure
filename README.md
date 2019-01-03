@@ -181,3 +181,27 @@
     - 피연산자가 들어오면 스택에 담는다.
     - 연산자를 만나면 스택에서 두 개의 연산자를 꺼내서 연산한 뒤에 그 결과를 스택에 담는다.
     - 연산을 마친 뒤에 스택에 남아있는 하나의 피연산자가 연산 수행 결과이다.
+
+---
+## Queue (큐)
+  * 큐는 뒤쪽으로 들어가서 앞 쪽으로 나오는 자료구조이다.
+  * 이러한 특성 때문에 스케줄링,탐색 알고리즘에서 다방면으로 활용된다.
+  * 배열을 이용한 구현 방법과 연결 리스트를 이용한 구현 방법이 있다.
+
+![queue](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTpFXQdYj42wO508YtK4lS7nRLVGA1TyCOcM_Iau_EXFqnG6h4YQ)
+
+---
+## 선택정렬과 삽입정렬
+  * 선택 정렬이란 가장 작은 것은 선택해서 앞으로 보내는 정렬 기법이다. 가장 작은 것을 선택하는 데에 N번, 앞으로 보내는 데에 N번의 연산으로 O(N^2)의 시간 복잡도를 가진다.
+  * 삽입 정렬이란 각 숫자를 적절한 위치에 삽입하는 정렬 기법이다. 들어갈 위치를 선택하는데 N번, 선택하는 횟수로 N번이므로 O(N^2)의 시간 복잡도를 가진다.
+  ![선택정렬](https://gmlwjd9405.github.io/images/algorithm-selection-sort/selection-sort.png)
+  ![삽입정렬](https://gmlwjd9405.github.io/images/algorithm-insertion-sort/insertion-sort.png)
+  > 출처 : https://jongmin92.github.io/2017/11/06/Algorithm/Concept/basic-sort/
+
+---
+## 퀵 정렬
+  * 퀵 정렬이란 피벗을 기준으로 큰 값과 작은 값을 서로 교체하는 정렬 기법이다. 값을 서로 교체하는데에 N번, 엇갈린 경우 교체 이후에 원소가 반으로 나누어지므로 전체 원소를 나누는 데에 평균적으로 logN번이 소요되므로 평균적으로 O(NlogN)의 시간 복잡도를 가진다.
+  ![quickSort](http://interactivepython.org/courselib/static/pythonds/_images/partitionA.png)
+  > 출처 :http://interactivepython.org/courselib/static/pythonds/SortSearch/TheQuickSort.html
+
+  * 퀵 정렬은 편향된 분할이 발생할 때 연산의 양이 O(N^2)이다. 따라서 실제로 정렬을 함에 있어서는 퀵 정렬을 직접 구현하지 않는다. 따라서 C++의 algorithm 라이브러리를 사용한다. algorithm 라이브러리의 sort() 함수는 퀵 정렬을 기반으로 하되 O(NlogN)을 보장한다.
